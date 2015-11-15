@@ -9,6 +9,41 @@ highlight ZenkakuSpace cterm=underline ctermbg=DarkMagenta guibg=DarkMagenta
 au BufWinEnter * let w:m3 = matchadd("ZenkakuSpace", '　')
 au WinEnter * let w:m3 = matchadd("ZenkakuSpace", '　')
 
+" tab表示
+highlight ShowTab cterm=underline ctermbg=DarkGreen guibg=DarkGreen
+au BufWinEnter * let w:m3 = matchadd("ShowTab", '\t')
+au WinEnter * let w:m3 = matchadd("ShowTab", '\t')
+
 " Escの2回押しでハイライト消去
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
+
+" insertモードから抜ける
+inoremap <silent> jj <ESC>
+
+" カーソル後の文字削除
+inoremap <silent> <C-d> <Del>
+" カーソルから行頭まで削除
+inoremap <silent> <C-d>b <Esc>lc^
+" カーソルから行末まで削除
+inoremap <silent> <C-d>w <Esc>lc$
+" カーソルから行頭までヤンク
+inoremap <silent> <C-y>b <Esc>ly0<Insert>
+" カーソルから行末までヤンク
+inoremap <silent> <C-y>w <Esc>ly$<Insert>
+
+" 引用符, 括弧の設定
+inoremap { {}<Left>
+inoremap [ []<Left>
+inoremap ( ()<Left>
+inoremap " ""<Left>
+inoremap ' ''<Left>
+inoremap < <><Left>
+
+au FileType vim set tabstop=2|set shiftwidth=2|set expandtab
+au FileType zsh set tabstop=2|set shiftwidth=2|set expandtab
+au FileType css set tabstop=2|set shiftwidth=2|set expandtab
+au FileType javascript set tabstop=2|set shiftwidth=2|set expandtab
+au FileType html set tabstop=2|set shiftwidth=2|set expandtab
+au FileType htmldjango set tabstop=2|set shiftwidth=2|set expandtab
+au FileType sql set tabstop=2|set shiftwidth=2|set expandtab
 
