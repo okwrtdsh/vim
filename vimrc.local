@@ -43,6 +43,7 @@ au FileType vim set tabstop=2|set shiftwidth=2|set expandtab
 au FileType zsh set tabstop=2|set shiftwidth=2|set expandtab
 au FileType css set tabstop=2|set shiftwidth=2|set expandtab
 au FileType javascript set tabstop=2|set shiftwidth=2|set expandtab
+au FileType json set tabstop=2|set shiftwidth=2|set expandtab
 au FileType html set tabstop=2|set shiftwidth=2|set expandtab
 au FileType htmldjango set tabstop=2|set shiftwidth=2|set expandtab
 au FileType sql set tabstop=2|set shiftwidth=2|set expandtab
