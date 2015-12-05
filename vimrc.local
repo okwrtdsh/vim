@@ -37,7 +37,7 @@ inoremap [ []<Left>
 inoremap ( ()<Left>
 inoremap " ""<Left>
 inoremap ' ''<Left>
-inoremap < <><Left>
+" inoremap < <><Left>
 
 au FileType vim set tabstop=2|set shiftwidth=2|set expandtab
 au FileType zsh set tabstop=2|set shiftwidth=2|set expandtab
