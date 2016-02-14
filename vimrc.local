@@ -47,5 +47,4 @@ au FileType json set tabstop=2|set shiftwidth=2|set expandtab
 au FileType html set tabstop=2|set shiftwidth=2|set expandtab
 au FileType htmldjango set tabstop=2|set shiftwidth=2|set expandtab
 au FileType sql set tabstop=2|set shiftwidth=2|set expandtab
-au FileType go set tabstop=4|set shiftwidth=4|set expandtab
 

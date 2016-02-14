@@ -61,6 +61,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " Let NeoBundle manage NeoBundle
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/neocomplete'
 
 "*****************************************************************************
 "" NeoBundle install packages
@@ -512,6 +513,40 @@ noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=lin
 
 
 
+
+
+
+
+
+"" neocomplate
+if neobundle#is_installed('neocomplete')
+    " neocomplete用設定
+    let g:neocomplete#enable_at_startup = 1
+    let g:neocomplete#enable_ignore_case = 1
+    let g:neocomplete#enable_smart_case = 1
+    if !exists('g:neocomplete#keyword_patterns')
+        let g:neocomplete#keyword_patterns = {}
+    endif
+    let g:neocomplete#keyword_patterns._ = '\h\w*'
+    let g:neocomplcache_enable_underbar_completion = 1
+endif
+
+"" golang
+exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
+
+if !exists('g:neocomplete#omni_patterns')
+    let g:neocomplete#omni_patterns = {}
+endif
+let g:neocomplete#omni_patterns.go = '\h\w*\.\?'
+
+
+
+
+
+
+
+
+
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
@@ -599,14 +634,27 @@ let g:tagbar_type_go = {
     \ 'ctagsargs' : '-sort -silent'
     \ }
 
+
+
+
+"" vim-go
+let g:go_bin_path = expand("/usr/local/go/bin")
+let g:go_play_open_browser = 0
+let g:go_fmt_fail_silently = 1
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = "gofmt"
+let g:go_disable_autoinstall = 1
+let g:go_snippet_engine = "neosnippet"
+
+
 " vim-go
 augroup FileType go
   au!
-  execute "set rtp+=$GOROOT/misc/vim"
-  execute "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
   set completeopt=menu,preview
   au FileType go nmap gd <Plug>(go-def)
   au FileType go nmap <Leader>dd <Plug>(go-def-vertical)
+  au FileType go nmap <Leader>ds <Plug>(go-def-split)
+  au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 
   au FileType go nmap <Leader>dv <Plug>(go-doc-vertical)
   au FileType go nmap <Leader>db <Plug>(go-doc-browser)
@@ -614,7 +662,7 @@ augroup FileType go
   au FileType go nmap <Leader>gi <Plug>(go-info)
 
   au FileType go nmap <leader>gr <Plug>(go-run)
-  au FileType go nmap <leader>rb <Plug>(go-build)
+  au FileType go nmap <leader>gb <Plug>(go-build)
   au FileType go nmap <leader>gt <Plug>(go-test)
 augroup END
 
