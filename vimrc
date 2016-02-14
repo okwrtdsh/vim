@@ -164,7 +164,7 @@ NeoBundle 'carlosgaldino/elixir-snippets'
 "" Go Lang Bundle
 NeoBundle "majutsushi/tagbar"
 NeoBundle "fatih/vim-go"
-
+NeoBundle "vim-jp/vim-go-extra"
 
 "" PHP Bundle
 NeoBundle 'arnaud-lb/vim-php-namespace'
