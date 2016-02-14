@@ -600,6 +600,9 @@ let g:tagbar_type_go = {
 " vim-go
 augroup FileType go
   au!
+  execute "set rtp+=$GOROOT/misc/vim"
+  execute "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
+  set completeopt=menu,preview
   au FileType go nmap gd <Plug>(go-def)
   au FileType go nmap <Leader>dd <Plug>(go-def-vertical)
 
