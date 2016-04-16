@@ -1,0 +1,15 @@
+alias reload='vimsh ~/.vimshrc'
+alias re=reload
+alias gvim='mvim --remote-tab-silent $$args'
+alias e=gvim
+alias grep="grep --color -n -I --exclude='*.svn-*' --exclude='entries' --exclude='*/cache/*'"
+export LSCOLORS=xefxcxdxbxegedabagacad
+alias l="ls -l"
+alias ll="ls -la"
+alias la="ls -a1"
+alias l1="ls -1"
+alias ls="ls -1"
+
+alias freeze="pip freeze"
+alias runserver="python manage.py runserver"
+
