@@ -561,7 +561,7 @@ nmap <silent> <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
 
-
+let g:syntastic_html_tidy_ignore_errors=["'<' + '/' + letter not allowed here"]
 
 let g:javascript_enable_domhtmlcss = 1
 
