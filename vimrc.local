@@ -31,6 +31,9 @@ inoremap <silent> <C-y>b <Esc>ly0<Insert>
 " カーソルから行末までヤンク
 inoremap <silent> <C-y>w <Esc>ly$<Insert>
 
+" C-pで繰り返し貼り付け
+vnoremap <silent> <C-p> "0p<CR>
+
 " 引用符, 括弧の設定
 inoremap { {}<Left>
 inoremap [ []<Left>
@@ -47,4 +50,6 @@ au FileType json set tabstop=2|set shiftwidth=2|set expandtab
 au FileType html set tabstop=2|set shiftwidth=2|set expandtab
 au FileType htmldjango set tabstop=2|set shiftwidth=2|set expandtab
 au FileType sql set tabstop=2|set shiftwidth=2|set expandtab
+
+au FileType htmldjango inoremap % %%<Left>
 
