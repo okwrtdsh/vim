@@ -35,16 +35,13 @@ sudo apt-get install ncurses-term
 以下のエラーが出る場合はvim-bootstrap-updaterを修正して下さい．
 ```shell
 $ vim
-/home/okwrtdsh/.vim/bundle/vim-bootstrap-updater/plugin/vim_bootstrap_updater.vim の処理中にエラーが検出されました:
-行    4:
-E319: このバージョンではこのコマンドは利用できません, ごめんなさい: python import sys
-行    5:
-E319: このバージョンではこのコマンドは利用できません, ごめんなさい: python import os
-行    6:
-E319: このバージョンではこのコマンドは利用できません, ごめんなさい: python import vim
-行    7:
-E319: このバージョンではこのコマンドは利用できません, ごめんなさい: python sys.path.append(vim.eval('expand("<sfile>:h")'))
-続けるにはENTERを押すかコマンドを入力してください
+Error detected while processing /home/okwrtdsh/.vim/bundle/vim-bootstrap-updater/plugin/vim_bootstrap_updater.vim:
+line    4:
+E319: Sorry, the command is not available in this version: python import sys
+line    5:
+E319: Sorry, the command is not available in this version: python import vim
+line    6:
+E319: Sorry, the command is not available in this version: python sys.path.append(vim.eval('expand("<sfile>:h")'))
 ```
 
 ```diff
