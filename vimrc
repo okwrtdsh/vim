@@ -566,6 +566,8 @@ let g:syntastic_html_tidy_ignore_errors=["'<' + '/' + letter not allowed here"]
 let g:javascript_enable_domhtmlcss = 1
 
 
+" latex
+let g:syntastic_tex_checkers = ['lacheck']
 
 
 " Add Merlin to rtp
