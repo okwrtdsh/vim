@@ -47,7 +47,7 @@ E319: Sorry, the command is not available in this version: python sys.path.appen
 ```diff
 $ git diff
 diff --git a/plugin/vim_bootstrap_updater.vim b/plugin/vim_bootstrap_updater.vim
-index 19f2870..ba8c189 100644
+index 19f2870..a7685a1 100644
 --- a/plugin/vim_bootstrap_updater.vim
 +++ b/plugin/vim_bootstrap_updater.vim
 @@ -1,10 +1,10 @@
@@ -62,7 +62,21 @@ index 19f2870..ba8c189 100644
 +python3 import os
 +python3 import vim
 +python3 sys.path.append(vim.eval('expand("<sfile>:h")'))
- 
+
  " --------------------------------
  "  Function(s)
+@@ -27,10 +27,10 @@ vimrc = os.environ.get('MYVIMRC', '~/.%src' % editor)
+
+ try:
+        update(vimrc, editor, langs)
+-       print '%s succesfully updated' % vimrc
++       print('%s succesfully updated' % vimrc)
+ except Exception as e:
+-       print 'error to generate %s' % vimrc
+-       print e
++       print('error to generate %s' % vimrc)
++       print(e)
+
+ endOfPython
+ endfunction
  ```
