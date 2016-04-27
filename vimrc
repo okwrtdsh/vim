@@ -1,7 +1,6 @@
 "*****************************************************************************
 "" NeoBundle core
 "*****************************************************************************
-
 if has('vim_starting')
   set nocompatible               " Be iMproved
 
@@ -12,7 +11,7 @@ endif
 let neobundle_readme=expand('~/.vim/bundle/neobundle.vim/README.md')
 
 let g:vim_bootstrap_langs = "javascript,ruby,haskell,lisp,elixir,python,c,php,html,lua,ocaml,perl,go,erlang"
-let g:vim_bootstrap_editor = "vim"				" nvim or vim
+let g:vim_bootstrap_editor = "vim"    " nvim or vim
 
 if !filereadable(neobundle_readme)
   echo "Installing NeoBundle..."
@@ -22,37 +21,7 @@ if !filereadable(neobundle_readme)
   let g:not_finsh_neobundle = "yes"
 
   " Run shell script if exist on custom select language
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/haskell/haskell.sh | bash -s stable
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 endif
 
 " Required:
@@ -62,15 +31,14 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplete'
-
 "*****************************************************************************
 "" NeoBundle install packages
 "*****************************************************************************
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'jistr/vim-nerdtree-tabs.git'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'ctrlpvim/ctrlp.vim'
-" NeoBundle 'bling/vim-airline'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'airblade/vim-gitgutter'
@@ -79,6 +47,9 @@ NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'vim-scripts/CSApprox'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'jiangmiao/auto-pairs'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle "Yggdroot/indentLine"
 NeoBundle 'Shougo/vimproc.vim', {
       \ 'build' : {
       \     'windows' : 'tools\\update-dll-mingw',
@@ -108,35 +79,27 @@ NeoBundle 'honza/vim-snippets'
 "" Color
 NeoBundle 'tomasr/molokai'
 
-"" Vim-Bootstrap Updater
-NeoBundle 'sherzberg/vim-bootstrap-updater'
+"" Vim-Bootstrap Updater by sherzberg
+NeoBundle 'avelino/vim-bootstrap-updater'
 
 "" Custom bundles
-
+"" Perl Bundle
 NeoBundle 'vim-perl/vim-perl'
 NeoBundle 'c9s/perlomni.vim'
 
-
 NeoBundle 'vim-scripts/c.vim'
-
 
 NeoBundle "jimenezrick/vimerl"
 
-
-NeoBundle "scrooloose/syntastic"
-NeoBundle "majutsushi/tagbar"
-
+"" Lua Bundle
 NeoBundle 'xolox/vim-lua-ftplugin'
 NeoBundle 'xolox/vim-lua-inspect'
-
 
 "" Lisp Bundle
 NeoBundle 'vim-scripts/slimv.vim'
 
-
 "" Javascript Bundle
-NeoBundle "scrooloose/syntastic"
-
+NeoBundle 'jelera/vim-javascript-syntax'
 
 "" HTML Bundle
 NeoBundle 'amirh/HTML-AutoCloseTag'
@@ -145,44 +108,33 @@ NeoBundle 'gorodinskiy/vim-coloresque'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'mattn/emmet-vim'
 
-
+"" OCaml Bundle
 NeoBundle "def-lkb/ocp-indent-vim"
-
 
 "" Python Bundle
 NeoBundle "davidhalter/jedi-vim"
-NeoBundle "scrooloose/syntastic"
-NeoBundle "majutsushi/tagbar"
-NeoBundle "Yggdroot/indentLine"
 
-
+"" Haskell Bundle
 NeoBundle "eagletmt/neco-ghc"
 NeoBundle "dag/vim2hs"
 NeoBundle "pbrisbin/vim-syntax-shakespeare"
 
-
 NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'carlosgaldino/elixir-snippets'
 
-
 "" Go Lang Bundle
-NeoBundle "majutsushi/tagbar"
 NeoBundle "fatih/vim-go"
 NeoBundle "vim-jp/vim-go-extra"
 
 "" PHP Bundle
 NeoBundle 'arnaud-lb/vim-php-namespace'
 
-
 "" Ruby Bundle
 NeoBundle "tpope/vim-rails"
 NeoBundle "tpope/vim-rake"
 NeoBundle "tpope/vim-projectionist"
 NeoBundle "thoughtbot/vim-rspec"
-NeoBundle "majutsushi/tagbar"
 NeoBundle "ecomba/vim-ruby-refactoring"
-
-
 
 "" Include user's extra bundle
 if filereadable(expand("~/.vimrc.local.bundles"))
@@ -273,6 +225,7 @@ if has("gui_running")
 else
   let g:CSApprox_loaded = 1
 
+
   if $COLORTERM == 'gnome-terminal'
     set term=gnome-256color
   else
@@ -280,6 +233,7 @@ else
       set term=xterm-256color
     endif
   endif
+
 endif
 
 if &term =~ '256color'
@@ -312,6 +266,7 @@ let g:airline_theme = 'powerlineish'
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
 
 "*****************************************************************************
 "" Abbreviations
@@ -417,8 +372,8 @@ noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>
 
 " session management
-nnoremap <leader>so :OpenSession
-nnoremap <leader>ss :SaveSession
+nnoremap <leader>so :OpenSession<Space>
+nnoremap <leader>ss :SaveSession<Space>
 nnoremap <leader>sd :DeleteSession<CR>
 nnoremap <leader>sc :CloseSession<CR>
 
@@ -441,11 +396,20 @@ set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|tox|ico|git|hg|svn))$'
 let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
-let g:ctrlp_use_caching = 0
+let g:ctrlp_use_caching = 1
+
+" The Silver Searcher
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_use_caching = 0
+endif
+
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 noremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_map = '<leader>e'
 let g:ctrlp_open_new_file = 'r'
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 
 " snippets
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -462,6 +426,15 @@ let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
 
+" Tagbar
+nmap <silent> <F4> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+
+" IndentLine
+let g:indentLine_enabled = 1
+let g:indentLine_concealcursor = 0
+let g:indentLine_char = '┆'
+let g:indentLine_faster = 1
 
 " Disable visualbell
 set visualbell t_vb=
@@ -513,12 +486,6 @@ noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=lin
 "" Custom configs
 
 
-
-
-
-
-
-
 "" neocomplate
 if neobundle#is_installed('neocomplete')
     " neocomplete用設定
@@ -531,10 +498,8 @@ if neobundle#is_installed('neocomplete')
     let g:neocomplete#keyword_patterns._ = '\h\w*'
     let g:neocomplcache_enable_underbar_completion = 1
 endif
-
 "" golang
 exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
-
 if !exists('g:neocomplete#omni_patterns')
     let g:neocomplete#omni_patterns = {}
 endif
@@ -543,29 +508,20 @@ let g:neocomplete#omni_patterns.go = '\h\w*\.\?'
 
 
 
-
-
-
-
-
-" Tagbar
-nmap <silent> <F4> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
-
-
 let erlang_folding = 1
 let erlang_show_errors = 1
 
-
-" Tagbar
-nmap <silent> <F4> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
 
 
 let g:syntastic_html_tidy_ignore_errors=["'<' + '/' + letter not allowed here"]
 
 let g:javascript_enable_domhtmlcss = 1
 
+" vim-javascript
+augroup vimrc-javascript
+  autocmd!
+  autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab softtabstop=4 smartindent
+augroup END
 
 " latex
 let g:syntastic_tex_checkers = ['lacheck']
@@ -596,18 +552,13 @@ let g:jedi#usages_command = "<leader>n"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "0"
 let g:jedi#completions_command = "<C-Space>"
+let g:jedi#smart_auto_mappings = 0
 
 " syntastic
 let g:syntastic_python_checkers=['python', 'flake8']
-let g:syntastic_python_flake8_post_args='--ignore=W391'
 
 " vim-airline
 let g:airline#extensions#virtualenv#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-
-" Tagbar
-nmap <silent> <F4> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
 
 
 let g:haskell_conceal_wide = 1
@@ -615,15 +566,6 @@ let g:haskell_multiline_strings = 1
 let g:necoghc_enable_detailed_browse = 1
 autocmd Filetype haskell setlocal omnifunc=necoghc#omnifunc
 
-
-" Tagbar
-nmap <silent> <F4> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
-
-
-" Tagbar
-nmap <silent> <F4> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
 
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
@@ -636,8 +578,6 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
     \ }
-
-
 
 
 "" vim-go
@@ -671,7 +611,6 @@ augroup END
 
 
 
-
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
@@ -679,12 +618,8 @@ let g:rubycomplete_rails = 1
 augroup vimrc-ruby
   autocmd!
   autocmd BufNewFile,BufRead *.rb,*.rbw,*.gemspec setlocal filetype=ruby
-  autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab
+  autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab softtabstop=2 smartindent
 augroup END
-
-" Tagbar
-nmap <silent> <F4> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
 
 let g:tagbar_type_ruby = {
     \ 'kinds' : [
@@ -696,6 +631,7 @@ let g:tagbar_type_ruby = {
         \ 'F:singleton methods'
     \ ]
 \ }
+
 " RSpec.vim mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
@@ -712,8 +648,6 @@ nnoremap <leader>rit  :RInlineTemp<cr>
 vnoremap <leader>rrlv :RRenameLocalVariable<cr>
 vnoremap <leader>rriv :RRenameInstanceVariable<cr>
 vnoremap <leader>rem  :RExtractMethod<cr>
-
-
 
 "" Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
