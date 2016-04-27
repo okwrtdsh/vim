@@ -87,6 +87,7 @@ NeoBundle 'Shougo/vimproc.vim', {
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
+NeoBundle 'Shougo/unite.vim'
 
 "" Vim-Session
 NeoBundle 'xolox/vim-misc'
