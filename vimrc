@@ -296,6 +296,25 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 noremap <F3> :NERDTreeToggle<CR>
 
+"" unite.vim
+" 入力モードで開始する
+" let g:unite_enable_start_insert=1
+" バッファ一覧
+nnoremap <silent> <leader>ub :<C-u>Unite buffer -default-action=tabopen<CR>
+" ファイル一覧
+nnoremap <silent> <leader>uf :<C-u>UniteWithBufferDir -buffer-name=files file -default-action=tabopen<CR>
+" レジスタ一覧
+nnoremap <silent> <leader>ur :<C-u>Unite -buffer-name=register register<CR>
+" ウィンドウを分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+" ウィンドウを縦に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+" ESCキーを2回押すと終了する
+" au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
+" au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+
 " grep.vim
 nnoremap <silent> <leader>f :Rgrep<CR>
 let Grep_Default_Options = '-IR'
