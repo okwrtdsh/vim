@@ -300,9 +300,10 @@ noremap <F3> :NERDTreeToggle<CR>
 " 入力モードで開始する
 " let g:unite_enable_start_insert=1
 " バッファ一覧
-nnoremap <silent> <leader>ub :<C-u>Unite buffer -default-action=tabopen<CR>
+nnoremap <silent> <leader>ub :<C-u>Unite buffer<CR>
 " ファイル一覧
-nnoremap <silent> <leader>uf :<C-u>UniteWithBufferDir -buffer-name=files file -default-action=tabopen<CR>
+nnoremap <silent> <leader>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> <leader>ut :<C-u>UniteWithBufferDir -buffer-name=files file -default-action=tabopen<CR>
 " レジスタ一覧
 nnoremap <silent> <leader>ur :<C-u>Unite -buffer-name=register register<CR>
 " ウィンドウを分割して開く
