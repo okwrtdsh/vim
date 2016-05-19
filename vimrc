@@ -300,6 +300,9 @@ set wildignore+=./**/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 noremap <F3> :NERDTreeToggle<CR>
 
+"" vim-nerdtree-tabs.git
+let g:nerdtree_tabs_autoclose=0
+
 "" unite.vim
 " 入力モードで開始する
 " let g:unite_enable_start_insert=1
