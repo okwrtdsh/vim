@@ -305,7 +305,7 @@ let g:nerdtree_tabs_autoclose=0
 
 "" unite.vim
 " 入力モードで開始する
-" let g:unite_enable_start_insert=1
+let g:unite_enable_start_insert=1
 " バッファ一覧
 nnoremap <silent> <leader>ub :<C-u>Unite buffer<CR>
 " ファイル一覧
