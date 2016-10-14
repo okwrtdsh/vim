@@ -118,6 +118,11 @@ NeoBundle "def-lkb/ocp-indent-vim"
 
 "" Python Bundle
 NeoBundle "davidhalter/jedi-vim"
+NeoBundleLazy 'lambdalisue/vim-pyenv', {
+        \ 'depends': ['davidhalter/jedi-vim'],
+        \ 'autoload': {
+        \   'filetypes': ['python', 'python3'],
+        \ }}
 
 "" Haskell Bundle
 NeoBundle "eagletmt/neco-ghc"
@@ -571,6 +576,18 @@ augroup vimrc-python
       \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 augroup END
 
+" vim-pyenv
+if jedi#init_python()
+  function! s:jedi_auto_force_py_version() abort
+    let major_version = pyenv#python#get_internal_major_version()
+    call jedi#force_py_version(major_version)
+  endfunction
+  augroup vim-pyenv-custom-augroup
+    autocmd! *
+    autocmd User vim-pyenv-activate-post   call s:jedi_auto_force_py_version()
+    autocmd User vim-pyenv-deactivate-post call s:jedi_auto_force_py_version()
+  augroup END
+endif
 " jedi-vim
 let g:jedi#popup_on_dot = 0
 let g:jedi#goto_assignments_command = "<leader>g"
