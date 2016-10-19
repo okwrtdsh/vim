@@ -558,12 +558,42 @@ if neobundle#is_installed('neocomplete')
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_ignore_case = 1
     let g:neocomplete#enable_smart_case = 1
+    let g:neocomplete#enable_auto_select = 1
+    let g:neocomplete#enable_enable_camel_case_completion = 0
     if !exists('g:neocomplete#keyword_patterns')
         let g:neocomplete#keyword_patterns = {}
     endif
     let g:neocomplete#keyword_patterns._ = '\h\w*'
     let g:neocomplcache_enable_underbar_completion = 1
+
+    " Plugin key-mappings.
+    inoremap <expr><C-g>     neocomplete#undo_completion()
+    inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+    " Recommended key-mappings.
+    " <CR>: close popup and save indent.
+    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+    function! s:my_cr_function()
+      return neocomplete#smart_close_popup() . "\<CR>"
+    endfunction
+    " <TAB>: completion.
+    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    " <C-h>, <BS>: close popup and delete backword char.
+    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+    inoremap <expr><C-y>  neocomplete#close_popup()
+    inoremap <expr><C-e>  neocomplete#cancel_popup()
+
+    inoremap <expr><CR>  pumvisible() ? neocomplete#close_popup() : "<CR>"
+
+    " for snippets
+    imap <expr><C-k> neocomplete#sources#snippets_complete#expandable() ?
+    "\<Plug>(neocomplete#snippets_expand)" : pumvisible() ? "\<C-n>" :
+    "\<TAB>"
+    smap <C-k> <Plug>(neocomplete#snippets_expand)
 endif
+
+
 "" golang
 exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
 if !exists('g:neocomplete#omni_patterns')
