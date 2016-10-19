@@ -81,6 +81,8 @@ endif
 
 NeoBundle 'honza/vim-snippets'
 
+NeoBundle 'okwrtdsh/sonictemplate-vim'
+
 "" Color
 NeoBundle 'tomasr/molokai'
 
@@ -444,6 +446,8 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
+
+noremap <leader>t :Template<Space>
 
 " syntastic
 let g:syntastic_always_populate_loc_list=1
