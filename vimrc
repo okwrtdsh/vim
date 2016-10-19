@@ -717,7 +717,12 @@ augroup FileType go
   au FileType go nmap <leader>gt <Plug>(go-test)
 augroup END
 
-
+" kotlin
+au BufRead,BufNewFile *.kt  set filetype=kotlin
+au BufRead,BufNewFile *.jet set filetype=kotlin
+au Syntax kotlin source ~/.vim/syntax/kotlin.vim
+au FileType kotlin setlocal expandtab shiftwidth=4
+      \ tabstop=8 softtabstop=4 smartindent
 
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
