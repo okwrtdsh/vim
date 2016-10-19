@@ -65,6 +65,15 @@ NeoBundle 'haya14busa/incsearch.vim'
 NeoBundle 'haya14busa/incsearch-easymotion.vim'
 NeoBundle 'haya14busa/incsearch-fuzzy.vim'
 
+"" Conque
+NeoBundleLazy 'rosenfeld/conque-term', {
+      \ 'autoload': {
+      \     'commands': ['ConqueTerm', 'ConqueTermSplit', 'ConqueTermTab', 'ConqueTermVSplit'],
+      \     'functions': ['conque_term#open', 'conque_term#subprocess', 'conque_term#register_function']
+      \    },
+      \ 'name': 'Conque'
+      \ }
+
 "" Vim-Session
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-session'
@@ -528,6 +537,19 @@ vnoremap K :m '<-2<CR>gv=gv
 noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs open<CR><CR>
 
 "" Custom configs
+
+"" Conque
+let g:ConqueTerm_ReadUnfocused = 1
+let g:ConqueTerm_CloseOnEnd = 1
+let g:ConqueTerm_StartMessages = 0
+let g:ConqueTerm_CWInsert = 1
+noremap <silent> <Leader>sh :ConqueTermVSplit zsh<CR>
+
+"" Conque
+function! s:delete_ConqueTerm(buffer_name)
+    let term_obj = conque_term#get_instance(a:buffer_name)
+    call term_obj.close()
+endfunction
 
 
 "" neocomplate
