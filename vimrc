@@ -198,8 +198,15 @@ set binary
 set ttyfast
 
 "" Directories for swp files
-set nobackup
-set noswapfile
+" set nobackup
+" set noswapfile
+set backup
+set backupdir=~/.vim/backup
+au BufWritePre * let &bex = '-' . strftime("%Y%m%d-%H%M%S") . '.vimbackup'
+set swapfile
+set directory=~/.vim/backup/swp
+set undofile
+set undodir=~/.vim/backup/undo
 
 set fileformats=unix,dos,mac
 set showcmd
