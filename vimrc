@@ -118,7 +118,7 @@ NeoBundle 'vim-scripts/slimv.vim'
 NeoBundle 'jelera/vim-javascript-syntax'
 
 "" HTML Bundle
-NeoBundle 'amirh/HTML-AutoCloseTag'
+NeoBundle 'vim-scripts/HTML-AutoCloseTag'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'gorodinskiy/vim-coloresque'
 NeoBundle 'tpope/vim-haml'
