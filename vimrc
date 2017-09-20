@@ -118,7 +118,7 @@ NeoBundle 'vim-scripts/slimv.vim'
 NeoBundle 'jelera/vim-javascript-syntax'
 
 "" HTML Bundle
-NeoBundle 'amirh/HTML-AutoCloseTag'
+NeoBundle 'vim-scripts/HTML-AutoCloseTag'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'gorodinskiy/vim-coloresque'
 NeoBundle 'tpope/vim-haml'
@@ -488,6 +488,8 @@ let g:indentLine_enabled = 1
 let g:indentLine_concealcursor = 0
 let g:indentLine_char = '┆'
 let g:indentLine_faster = 1
+" let g:indentLine_leadingSpaceChar = '·'
+" let g:indentLine_leadingSpaceEnabled = 1
 
 " Disable visualbell
 set visualbell t_vb=
@@ -667,7 +669,7 @@ let g:jedi#use_tabs_not_buffers = 1
 autocmd FileType python setlocal completeopt-=preview
 
 " syntastic
-let g:syntastic_python_checkers=['python', 'flake8']
+let g:syntastic_python_checkers=['python', 'flake8', 'mypy']
 
 " vim-airline
 let g:airline#extensions#virtualenv#enabled = 1
