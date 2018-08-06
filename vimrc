@@ -679,7 +679,7 @@ let g:jedi#use_tabs_not_buffers = 1
 autocmd FileType python setlocal completeopt-=preview
 
 " syntastic
-let g:syntastic_python_checkers=['python', 'flake8', 'mypy']
+let g:syntastic_python_checkers=['python', 'flake8']
 
 " vim-airline
 let g:airline#extensions#virtualenv#enabled = 1
