@@ -157,6 +157,9 @@ NeoBundle "tpope/vim-projectionist"
 NeoBundle "thoughtbot/vim-rspec"
 NeoBundle "ecomba/vim-ruby-refactoring"
 
+"" Nim
+NeoBundle 'gmarik/vundle'
+
 "" Include user's extra bundle
 if filereadable(expand("~/.vimrc.local.bundles"))
   source ~/.vimrc.local.bundles
@@ -725,6 +728,12 @@ au BufRead,BufNewFile *.jet set filetype=kotlin
 au Syntax kotlin source ~/.vim/syntax/kotlin.vim
 au FileType kotlin setlocal expandtab shiftwidth=4
       \ tabstop=8 softtabstop=4 smartindent
+
+" Nim
+au BufRead,BufNewFile *.nim  set filetype=nim
+au Syntax nim source ~/.vim/syntax/nim.vim
+au FileType nim setlocal expandtab shiftwidth=2
+      \ tabstop=4 softtabstop=2 smartindent
 
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
