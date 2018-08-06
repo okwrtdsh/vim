@@ -666,6 +666,10 @@ let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "0"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#smart_auto_mappings = 0
+" 補完で次の候補に進むときにtabを使えるという設定にしたつもりですができませんでした。
+let g:jedi#use_tabs_not_buffers = 1
+" ポップアップを表示しない
+autocmd FileType python setlocal completeopt-=preview
 
 " syntastic
 let g:syntastic_python_checkers=['python', 'flake8', 'mypy']
