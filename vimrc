@@ -157,6 +157,13 @@ NeoBundle "tpope/vim-projectionist"
 NeoBundle "thoughtbot/vim-rspec"
 NeoBundle "ecomba/vim-ruby-refactoring"
 
+" ドキュメント参照
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'yuku-t/vim-ref-ri'
+
+" メソッド定義元へのジャンプ
+NeoBundle 'szw/vim-tags'
+
 "" Nim
 NeoBundle 'gmarik/vundle'
 
@@ -743,10 +750,14 @@ let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
 
+let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_ruby_rubocop_args = '--fix-layout --lint'
+
 augroup vimrc-ruby
   autocmd!
   autocmd BufNewFile,BufRead *.rb,*.rbw,*.gemspec setlocal filetype=ruby
   autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab softtabstop=2 smartindent
+  nnoremap <silent> <leader>d :<C-u>UniteWithCursorWord -default-action=above -immediately ref/ri<CR>
 augroup END
 
 let g:tagbar_type_ruby = {
